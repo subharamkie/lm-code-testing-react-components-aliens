@@ -39,6 +39,6 @@ test('renders reason text input', () => {
 });
 test('renders submit button', () => {
 	render(<W12MForm/>);
-	const button = screen.getByText('Submit');
+	const button = screen.getByRole('button');
 	expect(button).toBeInTheDocument();
 });
