@@ -24,13 +24,12 @@ const W12MForm = () => {
 			
 			<W12MHeader />
 			<form>
-				<W12MInput id="species" type="text" label="Species Name:"/>
-				<W12MInput id="planet" type="text" label="Planet Name:"/>
-				<W12MInput id="beings" type="text" label="Number of beings:"/>
-				<W12MSelect id="mathQn" label="What is 2+2?" value={mathQn} onChange={handleSelectChange} options={options}/>
-				<W12MInput id="reason" type="textarea" label="Reason for sparing:"/>
-				<W12MInput id="submit" type="submit" label="Submit"/>
-
+				<W12MInput id="species" type="text" label="Species Name:" value={speciesName} onChangeFn={setSpecies}/>
+				<W12MInput id="planet" type="text" label="Planet Name:" value={planetName} onChangeFn={setPlanet}/>
+				<W12MInput id="beings" type="text" label="Number of beings:" value={beings} onChangeFn={setBeings}/>
+				<W12MSelect id="mathQn" label="What is 2+2?" value={mathQn} options={options} onChangeFn={handleSelectChange}/>
+				<W12MInput id="reason" type="textarea" label="Reason for sparing:" value={reason} onChangeFn={setReason}/>
+				
 
 				
 				{/*

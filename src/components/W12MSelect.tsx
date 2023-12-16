@@ -5,10 +5,10 @@ interface W12MSelectProps{
     label?:string;
     value: string;
     options:{value:string,label:string}[];
-	onChange: (value: string) => void;
+	onChangeFn: (value: string) => void;
 
 }
-const W12MSelect:React.FC<W12MSelectProps> = ({id,onChange,value,options,label}) =>{
+const W12MSelect:React.FC<W12MSelectProps> = ({id,onChangeFn: onChange,value,options,label}) =>{
     
     return (
         <div className="flex flex-col w-full gap-2">
