@@ -29,7 +29,7 @@ test('renders number of being text input', () => {
 });
 test('renders math qn text input', () => {
 	render(<W12MForm/>);
-	const mathTitle = screen.getByLabelText('What is 2+2?');
+	const mathTitle = screen.getByText('What is 2+2?');
 	expect(mathTitle).toBeInTheDocument();
 });
 test('renders reason text input', () => {

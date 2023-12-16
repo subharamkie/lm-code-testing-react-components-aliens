@@ -1,15 +1,21 @@
 import { useState } from 'react';
 import W12MHeader from './W12MHeader';
 import W12MInput from './W12MInput';
-
+import W12MSelect from './W12MSelect';
 const W12MForm = () => {
 	const [speciesName,setSpecies] = useState('');
 	const [planetName,setPlanet] = useState('');
 	const [beings,setBeings] = useState('');
-		const [mathQn,setMathQn] = useState('');
-		const [reason,setReason] = useState('');
+	const [mathQn,setMathQn] = useState('');
+	const [reason,setReason] = useState('');
+	const options = [
+		{value:'4', label:'4'},
+		{value:'0',label:'Not 4'},
+	];
 
-
+	const handleSelectChange = (value:string) =>{
+		setMathQn(value);
+	}
 	return (
 		<div className="container mt-5 text-center">
       <div className="grid gap-5 md:grid-cols-2">
@@ -21,7 +27,7 @@ const W12MForm = () => {
 				<W12MInput id="species" type="text" label="Species Name:"/>
 				<W12MInput id="planet" type="text" label="Planet Name:"/>
 				<W12MInput id="beings" type="text" label="Number of beings:"/>
-				<W12MInput id="mathQn" type="text" label="What is 2+2?"/>
+				<W12MSelect id="mathQn" label="What is 2+2?" value={mathQn} onChange={handleSelectChange} options={options}/>
 				<W12MInput id="reason" type="textarea" label="Reason for sparing:"/>
 				<W12MInput id="submit" type="submit" label="Submit"/>
 
