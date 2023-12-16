@@ -10,7 +10,7 @@ test('renders form element', () => {
 
 	// the container is just a normal DOM element, so we can look at normal properties like '.firstChild'
 	// for example, the firstChild of our container should be our form element
-	expect(container.firstChild).toHaveClass('w12MForm');
+	expect(container.getElementsByClassName('w12MForm').length).toBe(1);
 });
 test('renders species text input', () => {
 	render(<W12MForm/>);
@@ -39,6 +39,6 @@ test('renders reason text input', () => {
 });
 test('renders submit button', () => {
 	render(<W12MForm/>);
-	const button = screen.getByRole('button');
-expect(button).toHaveTextContent('Submit Form');
+	const button = screen.getByText('Submit');
+	expect(button).toBeInTheDocument();
 });

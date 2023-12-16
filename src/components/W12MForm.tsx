@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import W12MHeader from './W12MHeader';
+import W12MInput from './W12MInput';
 
 const W12MForm = () => {
 	const [speciesName,setSpecies] = useState('');
@@ -10,14 +11,25 @@ const W12MForm = () => {
 
 
 	return (
+		<div className="container mt-5 text-center">
+      <div className="grid gap-5 md:grid-cols-2">
+        
 		<section className='w12MForm'>
+			
 			<W12MHeader />
 			<form>
-				<label>Species Name:
-				<input name="species" type="text" value={speciesName} onChange={(e) => setSpecies(e.target.value)}></input>
-				</label>
-				<label>Planet Name:
-				<input name="planet" type="text" value={planetName} onChange={(e) => setPlanet(e.target.value)}></input>
+				<W12MInput id="species" type="text" label="Species Name:"/>
+				<W12MInput id="planet" type="text" label="Planet Name:"/>
+				<W12MInput id="beings" type="text" label="Number of beings:"/>
+				<W12MInput id="mathQn" type="text" label="What is 2+2?"/>
+				<W12MInput id="reason" type="textarea" label="Reason for sparing:"/>
+				<W12MInput id="submit" type="submit" label="Submit"/>
+
+
+				
+				{/*
+				<label>
+				<input name="" type="text"  onChange={(e) => setPlanet(e.target.value)}></input>
 				</label>
 				<label>Number of beings:
 				<input name="beings" type="text" value={beings} onChange={(e) => setBeings(e.target.value)}></input>
@@ -28,9 +40,11 @@ const W12MForm = () => {
 				<label>Reason for sparing:
 					<textarea value={reason} onChange={(e) => setReason(e.target.value)}/>
 				</label>
-				<button type="submit" id="submit">Submit Form</button>
+	<button type="submit" id="submit">Submit Form</button>*/}
 			</form>
 		</section>
+		</div>
+		</div>
 	);
 };
 
