@@ -3,7 +3,7 @@ interface ErrorProps{
 }
 const ErrorMessage:React.FC<ErrorProps> = (props) =>{
     return (
-        <div>
+        <div id="error">
             {(props.message).map((msg,index)=>{return <div className = "error" key={index}>{msg}</div>})}
         </div>
     )

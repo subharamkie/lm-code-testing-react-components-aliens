@@ -2,7 +2,6 @@
 export const validateInputElement : (value : string,id:string) => string[] = (id,value) => {
 	//check which type of input element is being passed by using the id, then apply the validation rules
 	const errors:string[] = [];
-	console.log(id)
 	switch(id){
 		case 'species':
 			//len 3-23,no number/special character

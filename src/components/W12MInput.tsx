@@ -17,7 +17,6 @@ const W12MInput:React.FC<W12MInputProps> = (props) => {
         const errorMessage = validateInputElement(props.id, inputValue);
     
         // Assuming you have some way to handle and display the validation errors
-        console.log("Validation errors:", errorMessage);
         setErrorMessage(errorMessage);
     
         props.onChangeFn(inputValue);
