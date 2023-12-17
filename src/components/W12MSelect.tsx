@@ -17,9 +17,7 @@ const W12MSelect:React.FC<W12MSelectProps> = ({id,onChangeFn,value,options,label
         const errorMessage = validateInputElement(id, value);
     
         // Assuming you have some way to handle and display the validation errors
-        console.log("Validation errors:", errorMessage);
         setErrorMessage(errorMessage);
-    
         onChangeFn(value);
       };
     
@@ -34,7 +32,7 @@ const W12MSelect:React.FC<W12MSelectProps> = ({id,onChangeFn,value,options,label
                 })}
                 
             </select>
-            {errorMessage.length > 0 && <ErrorMessage message={errorMessage} />}
+            {errorMessage && errorMessage.length > 0 && <ErrorMessage message={errorMessage} />}
         </div>
     )
 } 

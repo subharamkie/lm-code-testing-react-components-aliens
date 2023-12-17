@@ -18,7 +18,6 @@ const W12MForm = () => {
 
 	const handleSelectChange = (value:string) =>{
 		setMathQn(value);
-		console.log(value);
 		
 	}
 	const onSubmit = () =>{

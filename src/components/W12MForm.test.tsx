@@ -88,7 +88,7 @@ test('renders math qn text input', () => {
 	const mathTitle = screen.getByRole('option', { name: 'What is 2+2?' });
 	expect(mathTitle).toBeInTheDocument();
 });
-/* Not able to get it to pass with the value ****
+
 test('Pass the required input,value should be the selected one', async () => {
 	const choice = [
 		{value:'4', label:'4'},
@@ -96,31 +96,25 @@ test('Pass the required input,value should be the selected one', async () => {
 	];
 	let selectedValue = '';
 	const changeFn = (value:string) =>{
-		console.log('here'+value);
 		selectedValue = value;
 	}
 	const requiredProps : W12MSelectProps = {
-	id: "math",
-	value: '',
+	id: "mathQn",
+	value: '-1',
 	label:'What is 2+2?',
 	onChangeFn:changeFn,
 	options:choice,
 	};
 
 	render(<W12MSelect {...requiredProps} />);
-	//const selectElement = screen.getAllByRole('option');
-	//console.log(selectElement.length);
-	userEvent.selectOptions(
+	await userEvent.selectOptions(
 		// Find the select element, like a real user would.
 		screen.getByRole('combobox'),
 		// Find and select the Ireland option, like a real user would.
-		screen.getByRole('option', { name: '4' }),
+		screen.getByText('4'),
 	  )
-	//expect(selectElement.length).toBe(3);
-	const selectedElement = screen.getByRole('combobox');
-	console.log(selectedElement.nodeValue);
 	expect(selectedValue).toBe('4');
-});*/
+});
 test('renders reason text input', () => {
 	render(<W12MForm/>);
 	const reasonTitle = screen.getByLabelText('Reason for sparing:');
@@ -170,7 +164,7 @@ test('Use mock fn to validate species name', async () => {
 		  });
 });
 
-test('Check for validation error in species name ', async () => {
+test('Check for validation error in species name', async () => {
 	const requiredProps : W12MInputProps = {
 		id: "species",
 		value: 'test',
@@ -185,7 +179,7 @@ test('Check for validation error in species name ', async () => {
 		
 });
 
-test('Check for validation error in planet name ', async () => {
+test('Check for validation error in planet name', async () => {
 	const requiredProps : W12MInputProps = {
 		id: "planet",
 		value: 'test1',
@@ -201,7 +195,7 @@ test('Check for validation error in planet name ', async () => {
 		  });
 });
 
-test('Mock validation error in planet name ', async () => {
+test('Mock validation error in planet name', async () => {
 	const requiredProps : W12MInputProps = {
 		id: "planet",
 		value: 'test',
@@ -214,4 +208,118 @@ test('Mock validation error in planet name ', async () => {
 		await userEvent.type(screen.getByLabelText('Planet Name'),'a!@$!');
 		expect(screen.getByText('No special char')).toBeInTheDocument();
 		
+});
+test('Check for validation in number of beings', async () => {
+	const requiredProps : W12MInputProps = {
+		id: "beings",
+		value: '1000000000000000',
+		type:'text',
+		label:'Number of beings:',
+		onChangeFn: ()=>{},
+		};
+		mockValidateInput.validateInputElement.mockReturnValue([]);
+		render(<W12MInput {...requiredProps}/>);
+		await waitFor(() => {
+			// Check that the error div is not in the document
+			expect(screen.queryByTestId('error')).not.toBeInTheDocument();
+		  });
+});
+
+test('Mock validation error for number of beings', async () => {
+	const requiredProps : W12MInputProps = {
+		id: "beings",
+		value: 'test1',
+		type:'text',
+		label:'Number of beings:',
+		onChangeFn: ()=>{},
+		};
+		mockValidateInput.validateInputElement.mockReturnValue(['ONly numbers']);
+		render(<W12MInput {...requiredProps}/>);
+		await userEvent.type(screen.getByLabelText('Number of beings:'),'a!@$1');
+		expect(screen.getByText('ONly numbers')).toBeInTheDocument();
+		
+});
+
+
+test('Check for validation in reason input', async () => {
+	const requiredProps : W12MInputProps = {
+		id: "reason",
+		value: '12fferfe',
+		type:'text',
+		label:'Reason for sparing',
+		onChangeFn: ()=>{},
+		};
+		mockValidateInput.validateInputElement.mockReturnValue([]);
+		render(<W12MInput {...requiredProps}/>);
+		await waitFor(() => {
+			// Check that the error div is not in the document
+			expect(screen.queryByTestId('error')).not.toBeInTheDocument();
+		  });
+});
+
+test('Mock validation error for reason', async () => {
+	const requiredProps : W12MInputProps = {
+		id: "reason",
+		value: 'test1',
+		type:'text',
+		label:'Reason for sparing',
+		onChangeFn: ()=>{},
+		};
+		mockValidateInput.validateInputElement.mockReturnValue(['Length greater than 17']);
+		render(<W12MInput {...requiredProps}/>);
+		await userEvent.type(screen.getByLabelText('Reason for sparing'),'a!@$1');
+		expect(screen.getByText('Length greater than 17')).toBeInTheDocument();
+		
+});
+test('Check for validation in dropdown', async () => {
+
+	const choice = [
+		{value:'4', label:'4'},
+		{value:'0',label:'Not 4'},
+	];
+	const requiredProps : W12MSelectProps = {
+		id: "math",
+		value: '-1',
+		label:'What is 2+2?',
+		onChangeFn:()=>{},
+		options:choice,
+	};
+	mockValidateInput.validateInputElement.mockReturnValue([]);
+	
+	render(<W12MSelect {...requiredProps} />);
+	await userEvent.selectOptions(
+		// Find the select element, like a real user would.
+		screen.getByRole('combobox'),
+		// Find and select the Ireland option, like a real user would.
+		screen.getByRole('option', { name: '4' }),
+	)
+	
+	expect(screen.queryByTestId('error')).not.toBeInTheDocument();
+		 
+});
+
+test('Mock validation error for dropdown', async () => {
+	
+	const choice = [
+		{value:'4', label:'4'},
+		{value:'0',label:'Not 4'},
+	];
+	const requiredProps : W12MSelectProps = {
+		id: "math",
+		value: '-1',
+		label:'What is 2+2?',
+		onChangeFn:()=>{},
+		options:choice,
+	};
+	mockValidateInput.validateInputElement.mockReturnValue(['answer should be 4']);
+	
+	render(<W12MSelect {...requiredProps} />);
+	await userEvent.selectOptions(
+		// Find the select element, like a real user would.
+		screen.getByRole('combobox'),
+		// Find and select the Ireland option, like a real user would.
+		screen.getByRole('option', { name: 'Not 4' }),
+	)
+	
+	expect(screen.getByText('answer should be 4')).toBeInTheDocument();	
 });
