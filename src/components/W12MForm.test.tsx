@@ -85,8 +85,10 @@ test('Pass the required input,value should be the selected one', async () => {
 		{value:'4', label:'4'},
 		{value:'0',label:'Not 4'},
 	];
+	let selectedValue = '';
 	const changeFn = (value:string) =>{
-		console.log(value);
+		console.log('here'+value);
+		selectedValue = value;
 	}
 	const requiredProps : W12MSelectProps = {
 	id: "math",
@@ -106,8 +108,9 @@ test('Pass the required input,value should be the selected one', async () => {
 		screen.getByRole('option', { name: '4' }),
 	  )
 	//expect(selectElement.length).toBe(3);
-	console.log(screen.getByRole('combobox'));
-	expect(screen.getByRole('combobox')).toHaveValue('4');
+	const selectedElement = screen.getByRole('combobox');
+	console.log(selectedElement.nodeValue);
+	expect(selectedValue).toBe('4');
 });
 test('renders reason text input', () => {
 	render(<W12MForm/>);

@@ -3,6 +3,8 @@ import W12MHeader from './W12MHeader';
 import W12MInput from './W12MInput';
 import W12MSelect from './W12MSelect';
 import W12MSubmit from './W12MSubmit';
+
+
 const W12MForm = () => {
 	const [speciesName,setSpecies] = useState('test');
 	const [planetName,setPlanet] = useState('');
@@ -31,28 +33,12 @@ const W12MForm = () => {
 			
 			<W12MHeader />
 			<form>
-				<W12MInput id="species" type="text" label="Species Name:" value={speciesName} onChangeFn={setSpecies}/>
-				<W12MInput id="planet" type="text" label="Planet Name:" value={planetName} onChangeFn={setPlanet}/>
-				<W12MInput id="beings" type="text" label="Number of beings:" value={beings} onChangeFn={setBeings}/>
-				<W12MSelect id="mathQn" label="What is 2+2?" value={mathQn} options={options} onChangeFn={handleSelectChange}/>
-				<W12MInput id="reason" type="textarea" label="Reason for sparing:" value={reason} onChangeFn={setReason}/>
-				<W12MSubmit id="submit" onSubmitFn={onSubmit}/>
-
-				
-				{/*
-				<label>
-				<input name="" type="text"  onChange={(e) => setPlanet(e.target.value)}></input>
-				</label>
-				<label>Number of beings:
-				<input name="beings" type="text" value={beings} onChange={(e) => setBeings(e.target.value)}></input>
-				</label>
-				<label>What is 2+2?
-				<input name="mathQn" type="text" value={mathQn} onChange={(e) => setMathQn(e.target.value)}></input>
-				</label>
-				<label>Reason for sparing:
-					<textarea value={reason} onChange={(e) => setReason(e.target.value)}/>
-				</label>
-	<button type="submit" id="submit">Submit Form</button>*/}
+				<W12MInput id="species" type="text" label="Species Name:" value={speciesName} onChangeFn={setSpecies} />
+				<W12MInput id="planet" type="text" label="Planet Name:" value={planetName} onChangeFn={setPlanet} />
+				<W12MInput id="beings" type="text" label="Number of beings:" value={beings} onChangeFn={setBeings} />
+				<W12MSelect id="mathQn" label="What is 2+2?" value={mathQn} options={options} onChangeFn={handleSelectChange} />
+				<W12MInput id="reason" type="textarea" label="Reason for sparing:" value={reason} onChangeFn={setReason} />
+				<W12MSubmit id="submit" onSubmitFn={onSubmit}/>	
 			</form>
 		</section>
 		</div>

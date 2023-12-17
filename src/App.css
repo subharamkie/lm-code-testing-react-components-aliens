@@ -1,5 +1,6 @@
 :root {
 	--light: #fdf8e5;
+	--red: #ff0000;
 }
 
 body {
@@ -9,4 +10,10 @@ body {
 	display: flex;
 	justify-content: center;
 	margin: 0;
+}
+
+.error{
+	background-color:var(--red) ;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size: larger;
 }
