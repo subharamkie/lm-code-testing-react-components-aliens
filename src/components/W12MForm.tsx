@@ -4,9 +4,9 @@ import W12MInput from './W12MInput';
 import W12MSelect from './W12MSelect';
 import W12MSubmit from './W12MSubmit';
 const W12MForm = () => {
-	const [speciesName,setSpecies] = useState('');
+	const [speciesName,setSpecies] = useState('test');
 	const [planetName,setPlanet] = useState('');
-	const [beings,setBeings] = useState('');
+	const [beings,setBeings] = useState('Humans');
 	const [mathQn,setMathQn] = useState('');
 	const [reason,setReason] = useState('');
 	const options = [

@@ -1,4 +1,4 @@
-interface W12MInputProps{
+export interface W12MInputProps{
     label?:string;
     type:string;
     id:string;
