@@ -323,3 +323,10 @@ test('Mock validation error for dropdown', async () => {
 	
 	expect(screen.getByText('answer should be 4')).toBeInTheDocument();	
 });
+
+test('renders submited data on button click', async () => {
+	render(<W12MForm/>);
+	const button = screen.getByRole('button');
+	await userEvent.click(button);
+	expect(screen.getByText('Entered values:')).toBeInTheDocument();
+});
